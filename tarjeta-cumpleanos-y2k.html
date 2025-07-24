@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Felices 40! 🥳</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bungee&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .estrellas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .estrella {
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            animation: titilar 2s infinite;
+        }
+
+        @keyframes titilar {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .tarjeta {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.9), rgba(0, 255, 255, 0.9));
+            border: 3px solid #ffff00;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+            animation: entradaTarjeta 1s ease-out;
+        }
+
+        @keyframes entradaTarjeta {
+            0% {
+                transform: scale(0) rotate(180deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .brillo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .destello {
+            position: absolute;
+            color: #ffff00;
+            font-size: 15px;
+            animation: moverDestello 3s linear infinite;
+        }
+
+        @keyframes moverDestello {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .titulo {
+            font-family: 'Bungee', cursive;
+            font-size: 2.5rem;
+            color: #ffff00;
+            text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff;
+            margin-bottom: 20px;
+            animation: resplandorTitulo 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes resplandorTitulo {
+            0% {
+                text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff, 0 0 20px #ffff00;
+            }
+
+            100% {
+                text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff, 0 0 40px #ffff00, 0 0 60px #ffff00;
+            }
+        }
+
+        .entrada-nombre {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', monospace;
+            color: #ff00ff;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .entrada-nombre:focus {
+            outline: none;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .mensaje {
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin: 20px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .texto-escribiendo {
+            border-right: 3px solid #ffff00;
+            animation: parpadeo 1s infinite;
+        }
+
+        @keyframes parpadeo {
+
+            0%,
+            50% {
+                border-color: #ffff00;
+            }
+
+            51%,
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        .emojis {
+            font-size: 2rem;
+            margin: 20px 0;
+            animation: rebote 2s infinite;
+        }
+
+        @keyframes rebote {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .boton {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: 'Bungee', cursive;
+            color: white;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .boton:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .mensaje-final {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 480px) {
+            .titulo {
+                font-size: 2rem;
+            }
+
+            .mensaje {
+                font-size: 1.5rem;
+            }
+
+            .tarjeta {
+                padding: 20px;
+            }
+        }
+
+        .firma-desarrollo {
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            text-shadow: 1px 1px 6px #ff00ff, 1px 1px 10px #00ffff;
+            z-index: 100;
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="estrellas" id="estrellas"></div>
+
+    <div class="tarjeta">
+        <div class="brillo" id="brillo"></div>
+
+        <h1 class="titulo">¡FELICES 40!</h1>
+
+        <input type="text" class="entrada-nombre" id="entradaNombre" placeholder="Escribí tu nombre aquí..."
+            maxlength="20" onkeydown="detectarEnter(event)">
+
+        <div class="mensaje" id="mensaje"></div>
+
+        <div class="emojis">🥳💿📀🦋✨</div>
+
+        <button class="boton" onclick="empezarFiesta()">¡EMPEZAR FIESTA!</button>
+
+        <div class="mensaje-final oculto" id="mensajeFinal">
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">¡Que tengas un cumple súper retro! 🎉</p>
+            <button class="boton" onclick="mostrarFotolog()">¡MANDAME TU FOTOLOG!</button>
+            <button class="boton" onclick="mostrarMsn()">MSN O NADA 💬</button>
+        </div>
+
+        <div class="mensaje-final oculto" id="fotologMensaje">
+            <p style="font-size: 1.2rem; color: #ffff00;">📸 ¡Subí fotos de la fiesta a tu Fotolog! 📸</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">No te olvides de los comentarios con caritas (L)</p>
+            <button class="boton" onclick="volverMensajeFinal()">← Volver</button>
+        </div>
+
+        <div class="mensaje-final oculto" id="msnMensaje">
+            <p style="font-size: 1.2rem; color: #00ffff;">💬 ¡Agregame al MSN! 💬</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">Mi estado: "♪♫ Cumpliendo 40 y sintiéndome genial ♫♪"</p>
+            <button class="boton" onclick="volverMensajeFinal()">← Volver</button>
+        </div>
+    </div> <!-- Fin de .tarjeta -->
+
+    <footer class="firma-desarrollo">
+        <p>Desarrollado por LadyToxic ✨ | Y2K Birthday Card</p>
+    </footer>
+
+    <script>
+        // Crear estrellas
+        function crearEstrellas() {
+            const contenedorEstrellas = document.getElementById('estrellas');
+            for (let i = 0; i < 50; i++) {
+                const estrella = document.createElement('div');
+                estrella.className = 'estrella';
+                estrella.innerHTML = '✨';
+                estrella.style.left = Math.random() * 100 + '%';
+                estrella.style.top = Math.random() * 100 + '%';
+                estrella.style.animationDelay = Math.random() * 2 + 's';
+                contenedorEstrellas.appendChild(estrella);
+            }
+        }
+
+        // Crear brillo
+        function crearBrillo() {
+            const contenedorBrillo = document.getElementById('brillo');
+            setInterval(() => {
+                const destello = document.createElement('div');
+                destello.className = 'destello';
+                destello.innerHTML = '✨';
+                destello.style.left = Math.random() * 100 + '%';
+                destello.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                contenedorBrillo.appendChild(destello);
+
+                setTimeout(() => {
+                    destello.remove();
+                }, 4000);
+            }, 300);
+        }
+
+        // Efecto de escritura
+        function escribirTexto(texto, elemento, velocidad = 100) {
+            elemento.innerHTML = '';
+            elemento.classList.add('texto-escribiendo');
+            let i = 0;
+
+            function escribir() {
+                if (i < texto.length) {
+                    elemento.innerHTML += texto.charAt(i);
+                    i++;
+                    setTimeout(escribir, velocidad);
+                } else {
+                    elemento.classList.remove('texto-escribiendo');
+                }
+            }
+            escribir();
+        }
+
+        // Función principal de celebración
+        function empezarFiesta() {
+            const nombreInput = document.getElementById('entradaNombre').value.trim();
+            const nombre = nombreInput !== '' ? nombreInput : '.::SinNombre::.';
+            const mensaje = document.getElementById('mensaje');
+            const mensajeFinal = document.getElementById('mensajeFinal');
+
+            // Ocultar input y botón
+            document.getElementById('entradaNombre').style.display = 'none';
+            document.querySelector('.boton').style.display = 'none';
+
+            // Mostrar mensaje personalizado
+            const mensajeCumple = `¡Felices 40, ${nombre}! 🎂`;
+            escribirTexto(mensajeCumple, mensaje, 150);
+
+            // Mostrar mensaje final después de la animación
+            setTimeout(() => {
+                mensajeFinal.classList.remove('oculto');
+            }, 3000);
+        }
+
+        function mostrarFotolog() {
+            document.getElementById('mensajeFinal').classList.add('oculto');
+            document.getElementById('fotologMensaje').classList.remove('oculto');
+            document.getElementById('msnMensaje').classList.add('oculto');
+        }
+
+        function mostrarMsn() {
+            document.getElementById('mensajeFinal').classList.add('oculto');
+            document.getElementById('fotologMensaje').classList.add('oculto');
+            document.getElementById('msnMensaje').classList.remove('oculto');
+        }
+
+        function volverMensajeFinal() {
+            document.getElementById('fotologMensaje').classList.add('oculto');
+            document.getElementById('msnMensaje').classList.add('oculto');
+            document.getElementById('mensajeFinal').classList.remove('oculto');
+        }
+
+        function detectarEnter(evento) {
+            if (evento.key === "Enter") {
+                empezarFiesta();
+            }
+        }
+
+        // Inicializar efectos
+        crearEstrellas();
+        crearBrillo();
+
+        // Mensaje inicial
+        setTimeout(() => {
+            const mensaje = document.getElementById('mensaje');
+            escribirTexto('¡Escribí tu nombre y empezá la fiesta! 🎉', mensaje, 80);
+        }, 1000);
+    </script>
+</body>
+
+</html>
