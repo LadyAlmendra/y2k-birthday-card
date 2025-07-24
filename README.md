@@ -9,7 +9,7 @@ Este proyecto es una tarjeta interactiva de cumpleaños con animaciones, efectos
 ## Uso
 
 1. **Descarga o clona el repositorio.**
-2. Abre el archivo `tarjeta-cumpleanos-y2k.html` en tu navegador favorito.
+2. Abre el archivo `index.html` en tu navegador favorito.
 3. Escribe tu nombre y presiona Enter o haz clic en "¡EMPEZAR FIESTA!".
 4. Disfruta la animación y los mensajes. Explora los botones para ver mensajes de Fotolog y MSN.
 5. La firma de desarrollo aparece en el pie de página.
